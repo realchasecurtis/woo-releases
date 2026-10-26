@@ -1,0 +1,10 @@
+{
+  "source": "1500x500.jpg (user-provided reference)",
+  "primary": "#12ccfd",
+  "background": "#020608",
+  "surface": "#09131a",
+  "text": "#edf6fb",
+  "muted": "#aebfc9",
+  "buttonText": "#021116",
+  "note": "Primary is the most frequent saturated cyan sample in the JPEG. Logo is a manual vector contour trace. Icon isolates the W with added square padding; full logo retains source proportions."
+}

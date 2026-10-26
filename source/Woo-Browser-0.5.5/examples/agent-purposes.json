@@ -1,0 +1,5 @@
+[
+ {"schemaVersion":1,"category":"bot","purpose":"Example: answer a bounded FAQ and escalate unknown requests to a human.","agentId":"agent:example-faq-instance","proposedWooAlias":"woo://example-faq.bot","policyRef":"example-only-no-grants","resourceBudgetRef":"example-only-no-allocation"},
+ {"schemaVersion":1,"category":"agt","purpose":"Example: draft a project plan; request approval before any external action.","agentId":"agent:example-planner-instance","proposedWooAlias":"woo://example-planner.agt","policyRef":"example-only-no-grants","resourceBudgetRef":"example-only-no-allocation"},
+ {"schemaVersion":1,"category":"syn","purpose":"Example: describe an AI-created service with explicit provenance and ownership.","agentId":"agent:example-synthetic-instance","proposedWooAlias":"woo://example-service.syn","policyRef":"example-only-no-grants","resourceBudgetRef":"example-only-no-allocation"}
+]

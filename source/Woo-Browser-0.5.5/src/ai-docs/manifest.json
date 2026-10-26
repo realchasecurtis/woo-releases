@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "productVersion": "0.5.5",
+  "documents": [
+    {
+      "id": "ai-setup",
+      "title": "ai setup",
+      "file": "ai-setup.md"
+    },
+    {
+      "id": "architecture",
+      "title": "architecture",
+      "file": "architecture.md"
+    },
+    {
+      "id": "capabilities",
+      "title": "capabilities",
+      "file": "capabilities.md"
+    },
+    {
+      "id": "commands",
+      "title": "commands",
+      "file": "commands.md"
+    },
+    {
+      "id": "contracts",
+      "title": "contracts",
+      "file": "contracts.md"
+    },
+    {
+      "id": "examples",
+      "title": "examples",
+      "file": "examples.md"
+    },
+    {
+      "id": "extensions",
+      "title": "extensions",
+      "file": "extensions.md"
+    },
+    {
+      "id": "permissions",
+      "title": "permissions",
+      "file": "permissions.md"
+    },
+    {
+      "id": "quickstart",
+      "title": "quickstart",
+      "file": "quickstart.md"
+    },
+    {
+      "id": "security",
+      "title": "security",
+      "file": "security.md"
+    },
+    {
+      "id": "troubleshooting",
+      "title": "troubleshooting",
+      "file": "troubleshooting.md"
+    },
+    {
+      "id": "capabilities-json",
+      "title": "Machine-readable capabilities",
+      "file": "capabilities.json"
+    },
+    {
+      "id": "production-gates",
+      "title": "Production readiness and approvals",
+      "file": "production-gates.md"
+    },
+    {
+      "id": "projects-and-gate",
+      "title": "Projects, preview tabs and creation gate",
+      "file": "projects-and-gate.md"
+    },
+    {
+      "id": "agent-categories",
+      "title": "Agent categories: bot, agt, syn",
+      "file": "agent-categories.md"
+    },
+    {
+      "id": "agent-categories-json",
+      "title": "Agent category metadata",
+      "file": "agent-categories.json"
+    },
+    {
+      "id": "agent-purpose-schema",
+      "title": "Agent purpose schema",
+      "file": "agent-purpose-schema.json"
+    },
+    {
+      "id": "agent-examples",
+      "title": "Non-operational agent examples",
+      "file": "agent-examples.json"
+    },
+    {
+      "id": "experimental-foundations",
+      "title": "Experimental foundations: actual capabilities",
+      "file": "experimental-foundations.md"
+    },
+    {
+      "title": "Selected-file limits and cancellation",
+      "file": "selected-file.md",
+      "id": "selected-file"
+    },
+    {
+      "id": "privacy",
+      "title": "Privacy and local data",
+      "file": "privacy.md"
+    }
+  ]
+}

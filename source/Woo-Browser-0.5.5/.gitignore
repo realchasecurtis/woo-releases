@@ -1,0 +1,12 @@
+node_modules/
+downloads/
+staging*/
+artifacts/
+*-extract/
+profiles/
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12

@@ -1,0 +1,18 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:woo:agent-purpose:v1",
+  "title":"Woo agent purpose metadata v1 (not an authority grant)",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["schemaVersion","category","purpose","agentId"],
+  "properties":{
+    "schemaVersion":{"const":1},
+    "category":{"enum":["bot","agt","syn"]},
+    "purpose":{"type":"string","minLength":1,"maxLength":500},
+    "agentId":{"type":"string","pattern":"^agent:[A-Za-z0-9_-]{1,80}$"},
+    "proposedWooAlias":{"type":"string","pattern":"^woo://[a-z0-9][a-z0-9-]{0,62}\\.(bot|agt|syn)$"},
+    "policyRef":{"type":"string","maxLength":120,"description":"Documentation reference only; never proof of permission or user approval."},
+    "resourceBudgetRef":{"type":"string","maxLength":120,"description":"Reference to a separately enforced host budget. No automatic budget allocation."}
+  },
+  "$comment":"Labels and IDs do not create claims or authorize execution. Category and proposed alias suffix should match; host policy must enforce that semantic constraint when using metadata. Domain creation remains closed."
+}

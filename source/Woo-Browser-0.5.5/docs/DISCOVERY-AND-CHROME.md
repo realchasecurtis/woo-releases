@@ -1,0 +1,13 @@
+# Discovery and browser chrome interfaces
+
+sdk/discovery.cjs exports apiVersion 1 and createProvider({readRegistry,readPublished}). search(query) reads metadata only and returns ranked {name,title,description,aliases,address,destination,source,score} records. Default inputs are validated local Registry records and local published ownership metadata. Published entries require a root and an unreleased record. It neither fetches site content nor enumerates remote registries. Maximum query length 256, result count 50. Scores prioritize exact name, exact alias/title, prefixes/title tokens, description tokens, then short edit distance. One-character substring matches are not used. Use explicit registered aliases for nicknames; they do not establish ownership.
+
+Registry snapshot v1 accepts optional title (160 characters), description (500) and aliases (up to 12, 80 characters each). Control characters are rejected. Older snapshots remain valid. Display uses textContent; metadata never becomes executable markup, a file path or a trust configuration. Clicking results goes through the same main-process safe navigation and owner-origin checks.
+
+The main process constructs the local provider in src/main.cjs. A fork may replace this provider or ranking module. A future remote provider requires a separately configured trusted endpoint, explicit privacy/scope decisions, bounded validation and permission to deploy it. There is no hidden public index or backend credential in this revision. Optional public web search continues through sdk/web-search.cjs after explicit selection only.
+
+BrowserTabs remains an Electron main-process component. showSearch(query,results,scope) adds per-tab internal results state; ordinary page rendering uses x=0,y=108 and full client width. The 108px chrome layout is defined by 36px tabs, 48px navigation and 24px origin strip. Adjust controller and CSS together when forking. Keyboard routing runs in trusted chrome and page before-input-event handlers; no Node API is injected into pages. Native OS window controls remain standard.
+
+Theme is a saved light/dark/system preference applied to trusted internal pages. External web/native site content controls its own presentation. Declarative theme extensions retain their limited home-panel customization capability after explicit permission; they do not override unrelated web content or access credentials. Menu access to registry, creator tools, update status and provider/theme choice replaces the removed header/menu bar.
+
+No remote marketplace, executable plugin loader, user tracking, content crawler, new signing identity or shared ownership-rule mutation is introduced. Full source remains MIT licensed, with third-party notices intact.
