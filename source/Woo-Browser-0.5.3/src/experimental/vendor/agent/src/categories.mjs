@@ -1,0 +1,11 @@
+export const categories=Object.freeze({
+ schemaVersion:1,namespace:'woo-native',scopeMustBeExplicit:true,
+ claimsOpen:false,allocationFinalized:false,consensusFinalized:false,
+ grantsPermissions:false,confersTrust:false,confersResourceQuota:false,
+ categories:[
+  {suffix:'.bot',purpose:'Automation, chatbots and scripts',example:'woo://helper.bot'},
+  {suffix:'.agt',purpose:'Goal-directed autonomous agents',example:'woo://planner.agt'},
+  {suffix:'.syn',purpose:'Broader synthetic services and identities',example:'woo://studio.syn'}
+ ],
+ dnsBoundary:'.bot also exists in public DNS. An ordinary HTTPS .bot URL is not a Woo-native identity. Require explicit woo-native scope; never infer identity or privileges from a suffix.'
+});

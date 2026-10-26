@@ -1,0 +1,7 @@
+{
+ "apiVersion":1,"id":"woo.workshop","title":"Workshop toolkit",
+ "capabilities":["theme","ui.shortcuts","ui.panel"],
+ "theme":{"accent":"#f4c86a","background":"#151c2a"},
+ "panel":"Build custom tools on Woo's versioned ownership, Host and verification APIs. This extension has no page-reading, filesystem, credential or network privileges.",
+ "shortcuts":[{"title":"Open local Workshop Host","address":"woo://workshop.bunker"}]
+}

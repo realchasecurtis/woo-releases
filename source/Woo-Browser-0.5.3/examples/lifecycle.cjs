@@ -1,0 +1,7 @@
+'use strict';
+const sdk=require('../sdk/index.cjs');
+function run(){let clock=Date.UTC(2026,0,1);const registry=new sdk.OwnershipRegistry({clock:()=>clock,config:{maxUnobservedMs:2000*sdk.DAY}}),key=sdk.fixtureKey(),timeline=[];function record(label){timeline.push({label,state:registry.export()});}function operation(action){const r=registry.records.get('example.bunker');registry.apply(sdk.sign({...registry.challenge(),action,name:'example.bunker',publicKey:key.publicKey,generation:1,sequence:r?r.sequence+1:1},key.privateKey));}
+ operation('claim');record('Free signed claim');clock+=340*sdk.DAY;registry.maintain();record('Advance warning');registry.setAvailable(false);clock+=900*sdk.DAY;registry.setAvailable(true);record('900 day outage: ownership clock paused');clock+=25*sdk.DAY;registry.maintain();record('Final 30 day recovery starts');clock+=29*sdk.DAY;operation('confirm');record('Free owner confirmation recovers claim');clock+=366*sdk.DAY;registry.maintain();record('Later simulated inactivity: recovery starts again');clock+=30*sdk.DAY;registry.maintain();record('Release pending: no automatic forfeiture');registry.finalizeRelease('example.bunker',{confirmed:true,expectedGeneration:1,expectedOwner:sdk.fingerprint(key.publicKey)});record('Operator confirms release of fictitious test name only');return {simulation:true,noRealNamesAffected:true,timeline};}
+module.exports={run};if(require.main===module)console.log(JSON.stringify(run(),null,2));
+
+

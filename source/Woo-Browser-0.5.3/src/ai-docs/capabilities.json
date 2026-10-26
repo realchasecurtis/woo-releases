@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "productVersion": "0.5.0",
+  "localOnly": true,
+  "persistentOwnerIdentity": false,
+  "publicDeployment": false,
+  "platformArtifacts": [
+    "windows-x64"
+  ],
+  "interfaces": {
+    "registry": 3,
+    "onboarding": 1,
+    "bookmarks": 1,
+    "discovery": 1
+  },
+  "permissions": {
+    "pages": [
+      "sandboxed-rendering"
+    ],
+    "plugins": [
+      "explicit-declarative-capabilities"
+    ],
+    "aiSetup": "human approval required for keys, exposure, purchases and security changes"
+  },
+  "endings": {
+    "examples": [
+      "bunker",
+      "woo"
+    ],
+    "proposed": [
+      "hab",
+      "lun",
+      "exo",
+      "ast",
+      "lgr",
+      "syn",
+      "apl",
+      "wpg",
+      "wst",
+      "svc",
+      "prg",
+      "gui"
+    ],
+    "finalizedPolicy": false
+  },
+  "domainCreationOpen": false,
+  "publicInternetBrowsing": true,
+  "generalWebSearch": true,
+  "projects": {
+    "persistentMetadata": true,
+    "persistentSigning": false,
+    "missingFolderRecovery": "native picker; no content overwrite"
+  },
+  "nativePreviewTabs": true
+}
