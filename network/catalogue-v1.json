@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "name": "welcome.woo",
+      "destination": "https://raw.githubusercontent.com/realchasecurtis/woo-releases/main/network/welcome.txt",
+      "owner": "woo-operator",
+      "note": "Operator-curated HTTPS alias; not signed ownership or a public DNS registration.",
+      "title": "Welcome to Woo",
+      "description": "Hello world!"
+    }
+  ]
+}
