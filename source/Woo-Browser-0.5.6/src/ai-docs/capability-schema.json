@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Woo capability discovery v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "productVersion",
+    "discoveryGrantsAccess",
+    "domainCreationOpen",
+    "publicInternetBrowsing",
+    "experimentalDefault",
+    "operations",
+    "errorCodes",
+    "schemaRef",
+    "limits"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "productVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "discoveryGrantsAccess": {
+      "const": false
+    },
+    "domainCreationOpen": {
+      "const": false
+    },
+    "publicInternetBrowsing": {
+      "const": true
+    },
+    "experimentalDefault": {
+      "const": "disabled"
+    },
+    "operations": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "$ref": "#/$defs/operation"
+      }
+    },
+    "errorCodes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "schema_error",
+          "unknown_resource",
+          "limit_exceeded"
+        ]
+      }
+    },
+    "schemaRef": {
+      "const": "capability-schema"
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "descriptorBytes",
+        "documentBytes",
+        "combinedBytes"
+      ],
+      "properties": {
+        "descriptorBytes": {
+          "const": 16384
+        },
+        "documentBytes": {
+          "const": 131072
+        },
+        "combinedBytes": {
+          "const": 524288
+        }
+      }
+    }
+  },
+  "$defs": {
+    "operation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "implementation",
+        "availability",
+        "requiredScopes",
+        "schemaRef",
+        "boundary"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "implementation": {
+          "enum": [
+            "implemented",
+            "synthetic-only",
+            "unavailable"
+          ]
+        },
+        "availability": {
+          "enum": [
+            "callable",
+            "disabled-by-default",
+            "unavailable"
+          ]
+        },
+        "requiredScopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "schemaRef": {
+          "const": "capability-schema#/$defs/operation"
+        },
+        "boundary": {
+          "type": "string"
+        }
+      }
+    },
+    "describeRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "maxProperties": 0
+    }
+  }
+}

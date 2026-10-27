@@ -1,0 +1,50 @@
+[
+  {
+    "component": "node",
+    "version": "0.1.4",
+    "file": "src/store.mjs",
+    "sha256": "5486de33292b53bac273e265b7659646d03e00ecdf3c5b30c298170f97eb760e"
+  },
+  {
+    "component": "node",
+    "version": "0.1.4",
+    "file": "src/protocol.mjs",
+    "sha256": "fe9c1fa6172652e21f1021eefb30e36301f8cbfb1f816d9154ed5961bd9a211a"
+  },
+  {
+    "component": "node",
+    "version": "0.1.4",
+    "file": "LICENSE",
+    "sha256": "191cce82654a1665e77ade232826aa3daa9665503fd435b4cf2d0cea11b592ca"
+  },
+  {
+    "component": "agent",
+    "version": "0.1.1",
+    "file": "src/core.mjs",
+    "sha256": "81c80adc200dc0557075dac21ac67afff92860a379cb877ca60bc15c3d603ab7"
+  },
+  {
+    "component": "agent",
+    "version": "0.1.1",
+    "file": "src/schema.mjs",
+    "sha256": "b4393bd55e9999a578d309593a0f97474ffc58e398134632c97a306b960eacc0"
+  },
+  {
+    "component": "agent",
+    "version": "0.1.1",
+    "file": "src/categories.mjs",
+    "sha256": "3caf2834d7c6fbf73dd8aff40b57f3fb431054fdc8b37915ae65e8252523a2ba"
+  },
+  {
+    "component": "agent",
+    "version": "0.1.1",
+    "file": "categories.json",
+    "sha256": "570460510c509c0559ff6e1f86b57111261cf0420c4e82e1259be7cf3eeac1fc"
+  },
+  {
+    "component": "agent",
+    "version": "0.1.1",
+    "file": "LICENSE",
+    "sha256": "85d608bf5062cbc46377f98578b2f96397c6b2f67fd368f9ab3f6327d92dc604"
+  }
+]

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "productVersion": "0.5.6",
+  "discoveryGrantsAccess": false,
+  "domainCreationOpen": false,
+  "publicInternetBrowsing": true,
+  "experimentalDefault": "disabled",
+  "operations": [
+    {
+      "id": "capabilities.describe",
+      "implementation": "implemented",
+      "availability": "callable",
+      "requiredScopes": [
+        "trusted-ui-or-local-sdk"
+      ],
+      "schemaRef": "capability-schema#/$defs/operation",
+      "boundary": "read-only packaged metadata"
+    },
+    {
+      "id": "documentation.read",
+      "implementation": "implemented",
+      "availability": "callable",
+      "requiredScopes": [
+        "trusted-ui-or-local-sdk"
+      ],
+      "schemaRef": "capability-schema#/$defs/operation",
+      "boundary": "fixed packaged documentation allowlist"
+    },
+    {
+      "id": "node.import",
+      "implementation": "implemented",
+      "availability": "disabled-by-default",
+      "requiredScopes": [
+        "explicit-experimental-enable",
+        "native-file-selection"
+      ],
+      "schemaRef": "capability-schema#/$defs/operation",
+      "boundary": "verified memory-only import; no serving"
+    },
+    {
+      "id": "node.search",
+      "implementation": "implemented",
+      "availability": "disabled-by-default",
+      "requiredScopes": [
+        "explicit-experimental-enable"
+      ],
+      "schemaRef": "capability-schema#/$defs/operation",
+      "boundary": "explicitly imported metadata only"
+    },
+    {
+      "id": "agent.documentation.read",
+      "implementation": "implemented",
+      "availability": "disabled-by-default",
+      "requiredScopes": [
+        "explicit-experimental-enable"
+      ],
+      "schemaRef": "capability-schema#/$defs/operation",
+      "boundary": "foundation packaged help/categories only"
+    },
+    {
+      "id": "agent.page.inspect",
+      "implementation": "synthetic-only",
+      "availability": "disabled-by-default",
+      "requiredScopes": [
+        "explicit-experimental-enable",
+        "fixture-only"
+      ],
+      "schemaRef": "capability-schema#/$defs/operation",
+      "boundary": "synthetic fixture; no real tab access"
+    },
+    {
+      "id": "agent.tabs.read",
+      "implementation": "unavailable",
+      "availability": "unavailable",
+      "requiredScopes": [],
+      "schemaRef": "capability-schema#/$defs/operation",
+      "boundary": "no live tab adapter"
+    },
+    {
+      "id": "agent.projects.read",
+      "implementation": "unavailable",
+      "availability": "unavailable",
+      "requiredScopes": [],
+      "schemaRef": "capability-schema#/$defs/operation",
+      "boundary": "no project adapter; selection is a persistent mutation"
+    },
+    {
+      "id": "registry.claim",
+      "implementation": "implemented",
+      "availability": "unavailable",
+      "requiredScopes": [],
+      "schemaRef": "capability-schema#/$defs/operation",
+      "boundary": "creation gate closed"
+    }
+  ],
+  "errorCodes": [
+    "schema_error",
+    "unknown_resource",
+    "limit_exceeded"
+  ],
+  "schemaRef": "capability-schema",
+  "limits": {
+    "descriptorBytes": 16384,
+    "documentBytes": 131072,
+    "combinedBytes": 524288
+  }
+}
