@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "selectionStatus": "selected-purpose-categories-not-global-allocation-policy",
+  "claimsOpen": false,
+  "categories": [
+    {"ending":"bot","label":"Automation and bots","purpose":"Automation, chatbots and scripted services.","wooAddressForm":"woo://name.bot","publicDnsCollision":true},
+    {"ending":"agt","label":"Goal-directed agents","purpose":"Agent software that plans and acts toward goals.","wooAddressForm":"woo://name.agt","publicDnsCollision":"no-exclusivity-asserted"},
+    {"ending":"syn","label":"Synthetic services and identities","purpose":"Broader synthetic or AI-created services and digital identities.","wooAddressForm":"woo://name.syn","publicDnsCollision":"no-exclusivity-asserted"}
+  ],
+  "authority":"Descriptive metadata only. No permission, resource entitlement, domain ownership or global availability is conferred."
+}

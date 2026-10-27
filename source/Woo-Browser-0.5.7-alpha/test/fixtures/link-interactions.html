@@ -1,0 +1,20 @@
+<!doctype html><meta charset="utf-8"><title>Woo link interaction fixture</title>
+<h1>Link interaction fixture — no accounts required</h1>
+<p>Serve only through the approved HTTPS fixture host. These links use that host, except explicitly invalid-scheme cases.</p>
+<ul>
+ <li><a href="/destination">Ordinary same-tab GET</a></li>
+ <li><a href="/destination" target="_blank" rel="noopener">target=_blank GET</a></li>
+ <li><a href="/redirect">HTTPS redirect endpoint (fixture must supply 302)</a></li>
+ <li><a href="/file.txt">Right-click: tab, window, Save Link As, copy, inspect</a></li>
+ <li><a href="javascript:void(0)">Unsupported script link: navigation/save disabled, explicit copy allowed</a></li>
+ <li><a href="mailto:test@example.com">Unsupported mail application link</a></li>
+</ul>
+<button id="direct">User-clicked window.open URL</button>
+<button id="blank">Blank-window-then-URL flow</button>
+<button id="unsolicited">Schedule a later popup (must still require confirmation)</button>
+<form action="/destination" method="post" target="_blank"><input name="sample" value="public fixture"><button>POST popup (must explain unsupported)</button></form>
+<script>
+document.getElementById('direct').onclick=()=>window.open('/destination');
+document.getElementById('blank').onclick=()=>{const child=window.open('about:blank');if(child)setTimeout(()=>child.location='/destination',200);};
+document.getElementById('unsolicited').onclick=()=>setTimeout(()=>window.open('/destination?delayed'),6000);
+</script>

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "map.woo",
+    "destination": "https://www.openstreetmap.org/",
+    "title": "Maps",
+    "description": "Explore the world with OpenStreetMap."
+  },
+  {
+    "name": "translate.woo",
+    "destination": "https://translate.google.com/",
+    "title": "Translate",
+    "description": "Translate text with Google Translate."
+  },
+  {
+    "name": "weather.woo",
+    "destination": "https://www.weather.gov/",
+    "title": "Weather",
+    "description": "US forecasts from the National Weather Service. Enter a city yourself."
+  },
+  {
+    "name": "community.woo",
+    "destination": "https://x.com/",
+    "title": "Community",
+    "description": "X / Twitter main website. Independent third-party service."
+  }
+]

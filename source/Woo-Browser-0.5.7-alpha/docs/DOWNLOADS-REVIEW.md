@@ -1,0 +1,9 @@
+# Downloads candidate: review required, not packaged or published
+
+Uses Electron45 Session will-download and DownloadItem. Only current ordinary HTTPS tab/main frame admitted. Redirect URL chain validated; existing proxy blocks private networks. Native Woo renderer downloads remain blocked. Two concurrent items, 512MiB/item, 30-minute deadline, at most40 history entries. No remote URL/query, destination path, cookies or tokens persisted in history. Filenames are untrusted display text, never HTML.
+
+Native Chromium save dialog provides the actual Save consent and overwrite confirmation. No setSavePath, replacement transfer, shell-open, auto-execute, resume or renderer filesystem bridge. Ordinary pages receive no Woo API. Trusted Downloads window has exact sender/frame/URL and four-action allowlist. Clear removes finished history only. Close cancels in-progress items. Privacy: downloaded filenames themselves can be sensitive; history is local and clearable.
+
+Review/runtime gates: this is source implementation with mocks only. Chromium OS quarantine/MOTW behavior is preserved by leaving download handling native, but must be verified with real harmless fixture downloads before release. Native dialog path, symlink and overwrite behavior are not yet verified; no claim of protection from hostile same-user filesystem races. Site-initiated download attempts can prompt a native Save dialog; no bytes should finalize without explicit user Save. Need review of prompt-spam/gesture policy and pre-dialog buffering. Resume deliberately unavailable. Enforced size cap reacts to updates and may have bounded Chromium buffer overshoot; not a hard disk quota. Actual renderer, native Save, completed file marking, cancel cleanup, accessibility and theme/window behavior remain untested. No actual files downloaded by this task.
+
+References: https://www.electronjs.org/docs/latest/api/download-item and https://www.electronjs.org/docs/latest/api/session .

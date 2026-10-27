@@ -1,0 +1,1 @@
+const real=require('../sdk/index.cjs');module.exports={...real,OwnershipRegistry:class extends real.OwnershipRegistry{constructor(opts={}){super({...opts,allowNewClaims:true});}},restoreCheckpoint:(...args)=>{const r=real.restoreCheckpoint(...args);r.allowNewClaims=true;return r;}};

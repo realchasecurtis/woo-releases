@@ -1,0 +1,32 @@
+[
+  {
+    "path": "vendor/sdk/crypto.cjs",
+    "origin": "Woo-0.5.6-candidate/sdk/crypto.cjs",
+    "unchanged": true,
+    "sha256": "881dc86f8f561930c5eec783139f530bf5d9acfa0ec2f116d6f609c9f970cebe"
+  },
+  {
+    "path": "vendor/sdk/host.cjs",
+    "origin": "Woo-0.5.6-candidate/sdk/host.cjs",
+    "unchanged": true,
+    "sha256": "9a80690753eca8d04a84097587cfa36be79958ede287c017e0c53423ee640f51"
+  },
+  {
+    "path": "vendor/sdk/namespace.cjs",
+    "origin": "Woo-0.5.6-candidate/sdk/namespace.cjs",
+    "unchanged": true,
+    "sha256": "8e32d644fa86abd3c5891d00224e5d0f53e9cdb600ffcc493973005822f47522"
+  },
+  {
+    "path": "vendor/sdk/ownership.cjs",
+    "origin": "Woo-0.5.6-candidate/sdk/ownership.cjs",
+    "unchanged": true,
+    "sha256": "aa710bb15fce6693a1d1b53c2b5e707f276ea94f73126edee6de3bac43d4e8ad"
+  },
+  {
+    "path": "vendor/src/policy.cjs",
+    "origin": "Woo-0.5.6-candidate/src/policy.cjs",
+    "unchanged": true,
+    "sha256": "1c245fd33792ce8d92e1b7180ce2b0be2401725d58108abda71d2e586d719312"
+  }
+]

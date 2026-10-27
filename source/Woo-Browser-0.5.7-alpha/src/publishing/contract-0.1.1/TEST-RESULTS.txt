@@ -1,0 +1,9 @@
+Actual test execution summary — 2026-10-27
+Node v24.19.0, Windows. Command from task-5:
+node --test --test-isolation=none publishing-slice-0.1.1/test/slice.test.mjs
+Exit 0. Tests 16; pass 16; fail 0; cancelled 0; skipped 0; duration 1996.6651 ms.
+Original 13 tests passed plus:
+- search-observed known revocation clears retained copy and reports transition; unknown search does not pin
+- shorter valid fork quarantines through resolve or search; authentic shorter prefix stays rollback-only
+- 64 ordinary operations reserve one terminal revoke; excess update rejected before storage and at provider boundary
+No listeners, network, durable signing keys, profile changes or GitHub writes. No EPERM or escalation on this command. This is the result summary, not an independently executed re-review.

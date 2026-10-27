@@ -1,0 +1,11 @@
+'use strict';
+exports.create=async({tabs})=>{const c=await import('./contract-0.1.1/src/index.mjs'),{fixtureKey}=require('../../sdk/crypto.cjs'),{NativeRenderer}=require('../native-renderer.cjs');const provider=c.createMemoryProvider(),publisher=c.createPublisher({provider,key:fixtureKey(),label:'sample',publicTestContent:true}),renderer=new NativeRenderer();let client=c.createClient({provider}),revision=0,created=false,closed=false,epoch=0,job=null;
+const invalidate=()=>require('./safety.cjs').invalidate({client,renderer,tabs,names:new Set([publisher.name])});
+return {action(command){if(closed)return Promise.reject(Error('Closed'));if(job)return Promise.reject(Error('Busy'));const generation=epoch,alive=()=>{if(closed||generation!==epoch)throw Error('Cancelled');};const work=Promise.resolve().then(async()=>{try{alive();switch(command){
+case 'create':await publisher.create();alive();created=true;return {phase:'created',name:publisher.name};
+case 'publish':if(!created)throw Error('Create test name first');await publisher.publish({'/index.html':`<!doctype html><title>Woo TEST publication</title><h1>Verified test revision ${revision+1}</h1><p>No public publication.</p>`,'/readme.txt':'Synthetic public test content only'});alive();revision++;return {phase:'published',revision};
+case 'fresh':await invalidate();alive();client=c.createClient({provider});return {phase:'fresh-client',note:'Fresh in-memory client, same synthetic catalogue; not another device'};
+case 'find':{const results=await client.search('sample');alive();return {phase:'discovered',results};}
+case 'open':{const result=await client.open(publisher.name);alive();const item=await renderer.open(result.record,result.bundle,{embedded:true});try{alive();const t=tabs.adoptNative(item,{background:false});return {phase:'rendered',tabId:t.id,revision:result.record.revision};}catch(e){item.dispose();throw e;}}
+case 'revoke':await publisher.revoke();alive();await invalidate();alive();return {phase:'revoked'};
+default:throw Error('Unknown TEST command');}}catch(e){await invalidate();throw e;}});job=work;return work.finally(()=>{if(job===work)job=null;});},async close(){closed=true;epoch++;let failure;try{await job;}catch(e){if(e.message!=='Cancelled')failure=e;}await invalidate();await renderer.close();if(failure)throw failure;}};};

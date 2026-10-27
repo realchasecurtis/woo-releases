@@ -1,0 +1,20 @@
+'use strict';
+const fs=require('node:fs/promises'),path=require('node:path'),crypto=require('node:crypto');
+const aborted=s=>{if(s?.aborted)throw Error('cancelled');};
+function windowsMarker(){return {supported:process.platform==='win32',async mark(file){if(process.platform!=='win32')throw Error('marking unavailable');const ads=file+':Zone.Identifier',text='[ZoneTransfer]\r\nZoneId=3\r\n';await fs.writeFile(ads,text,{flag:'wx'});if(await fs.readFile(ads,'utf8')!==text)throw Error('mark verification failed');return true;},async verify(file){return (await fs.readFile(file+':Zone.Identifier','utf8'))==='[ZoneTransfer]\r\nZoneId=3\r\n';}};}
+// Root must be a main-owned selection boundary; no renderer paths accepted.
+async function createSaveAdapter({root,choose,marker,platform=process.platform}){
+ const base=await fs.realpath(root),destinations=new WeakMap(),transactions=new WeakSet();
+ if((await fs.lstat(root)).isSymbolicLink()||!(await fs.stat(base)).isDirectory())throw Error('Invalid destination root');
+ function destination(name){if(typeof name!=='string'||!/^[a-zA-Z0-9_-]+\.txt$/.test(name)||/^(con|prn|aux|nul|com\d|lpt\d)\./i.test(name))throw Error('TXT test destination required');const token=Object.freeze({});destinations.set(token,path.join(base,name));return token;}
+ async function guard(){if(await fs.realpath(root)!==base||(await fs.lstat(root)).isSymbolicLink())throw Error('Destination root changed');}
+ const api={destination,supportsSafetyMarking:p=>p===platform&&marker?.supported===true,chooseDestination:choose,
+ async begin(token,{maxBytes,signal}){aborted(signal);await guard();const target=destinations.get(token);destinations.delete(token);if(!target)throw Error('Unknown native destination');if(!Number.isSafeInteger(maxBytes)||maxBytes<0||maxBytes>1048576)throw Error('Invalid limit');const temporary=path.join(base,'.woo-'+crypto.randomUUID()+'.partial');const handle=await fs.open(temporary,'wx',0o600);const t={handle,temporary,target,maxBytes,written:0,hasher:crypto.createHash('sha256'),expected:null,marked:false,linked:false,closed:false};transactions.add(t);return t;},
+ async write(t,bytes,{signal}){if(!transactions.has(t)||t.closed||!Buffer.isBuffer(bytes)||bytes.length>t.maxBytes-t.written)throw Error('Invalid write');for(let offset=0;offset<bytes.length;){aborted(signal);const n=Math.min(16384,bytes.length-offset);const r=await t.handle.write(bytes,offset,n,null);if(!r.bytesWritten)throw Error('Short write');t.hasher.update(bytes.subarray(offset,offset+r.bytesWritten));offset+=r.bytesWritten;t.written+=r.bytesWritten;}aborted(signal);},
+ async mark(t,{signal}){if(!transactions.has(t)||t.closed)throw Error('Invalid transaction');aborted(signal);await t.handle.sync();t.expected=t.hasher.digest('hex');if(await marker.mark(t.temporary)!==true)throw Error('marking failed');aborted(signal);t.marked=true;return true;},
+ async commit(t,{signal}){if(!transactions.has(t)||!t.marked||t.closed)throw Error('Invalid commit');aborted(signal);await guard();const b=await fs.readFile(t.temporary);if(b.length!==t.written||crypto.createHash('sha256').update(b).digest('hex')!==t.expected)throw Error('Content changed');await t.handle.close();t.closed=true;aborted(signal);await fs.link(t.temporary,t.target);t.linked=true;try{aborted(signal);const finalBytes=await fs.readFile(t.target);if(finalBytes.length!==t.written||crypto.createHash('sha256').update(finalBytes).digest('hex')!==t.expected)throw Error('Content changed');if(await marker.verify(t.target)!==true)throw Error('Final marking absent');aborted(signal);await fs.unlink(t.temporary);transactions.delete(t);return {committed:true};}catch(e){await api.abort(t);throw e;}},
+ async abort(t){if(!transactions.has(t))return;if(!t.closed){await t.handle.close();t.closed=true;}if(t.linked){const [a,b]=await Promise.all([fs.stat(t.temporary),fs.stat(t.target)]);if(a.ino!==b.ino||a.dev!==b.dev)throw Error('Target identity changed; cleanup pending');await fs.unlink(t.target);t.linked=false;}await fs.unlink(t.temporary);transactions.delete(t);}
+ };return api;
+}
+module.exports={createSaveAdapter,windowsMarker};
+

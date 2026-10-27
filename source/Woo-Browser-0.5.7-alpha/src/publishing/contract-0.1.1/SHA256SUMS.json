@@ -1,0 +1,70 @@
+[
+  {
+    "path": "DEMO-RESULTS.txt",
+    "sha256": "a6b9e924ed09145c497fa678bdb470686d51a7d2cbce9c997c478e7f79868c33"
+  },
+  {
+    "path": "demo.mjs",
+    "sha256": "284fc39ecba2e6646e2eaf16c83828ae5dedebef786fb262b8b1eca6fed72661"
+  },
+  {
+    "path": "LICENSE",
+    "sha256": "191cce82654a1665e77ade232826aa3daa9665503fd435b4cf2d0cea11b592ca"
+  },
+  {
+    "path": "package.json",
+    "sha256": "432062128ec5c6e0c5155726d8054c0cf6b07ea51fdb087c8e285a787816caf8"
+  },
+  {
+    "path": "README.md",
+    "sha256": "7ed862b0f13a533c178dea8c07635e3ccf30bf7019644711bce9a314215e0fbc"
+  },
+  {
+    "path": "TEST-RESULTS.txt",
+    "sha256": "4bf54090e8286fc422d46a50d2ce6dddafd1d6d84781c83ccbdb00a3d0210612"
+  },
+  {
+    "path": "docs/CONTRACT.md",
+    "sha256": "806edde37ff8fb6c666174575189c37c18a0b12bfd3e665fdbff866b4361114d"
+  },
+  {
+    "path": "docs/REVIEW-REPAIRS.md",
+    "sha256": "6a7092537b10e837e5f4ffc1f5ae99bf1fd9ea879b26fd59401abee6683bf6be"
+  },
+  {
+    "path": "docs/SBOM.json",
+    "sha256": "647f282b29646f01d03192cb0dfd78ff694e74236e6b279666626d46c5a65478"
+  },
+  {
+    "path": "docs/VENDOR-PROVENANCE.json",
+    "sha256": "4bf790fb86f4295e4be443fc09cbd86ac9558c9cb09adb6e945eae946bafa598"
+  },
+  {
+    "path": "src/index.mjs",
+    "sha256": "c25d5d23f586f0f0042fcea505ffbc80445b7fe6b0d2e5b7f4a1f490c661093d"
+  },
+  {
+    "path": "test/slice.test.mjs",
+    "sha256": "47036c0db65d53963069954a5303a5e9234a1a8d242fa2426d5fdb6380b01e6b"
+  },
+  {
+    "path": "vendor/sdk/crypto.cjs",
+    "sha256": "881dc86f8f561930c5eec783139f530bf5d9acfa0ec2f116d6f609c9f970cebe"
+  },
+  {
+    "path": "vendor/sdk/host.cjs",
+    "sha256": "9a80690753eca8d04a84097587cfa36be79958ede287c017e0c53423ee640f51"
+  },
+  {
+    "path": "vendor/sdk/namespace.cjs",
+    "sha256": "8e32d644fa86abd3c5891d00224e5d0f53e9cdb600ffcc493973005822f47522"
+  },
+  {
+    "path": "vendor/sdk/ownership.cjs",
+    "sha256": "aa710bb15fce6693a1d1b53c2b5e707f276ea94f73126edee6de3bac43d4e8ad"
+  },
+  {
+    "path": "vendor/src/policy.cjs",
+    "sha256": "1c245fd33792ce8d92e1b7180ce2b0be2401725d58108abda71d2e586d719312"
+  }
+]

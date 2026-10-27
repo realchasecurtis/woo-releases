@@ -1,0 +1,21 @@
+Γ£ö create -> publish -> fresh discovery -> verified render-ready/export -> explicit offline retention (16.0643ms)
+Γ£ö update then owner revocation remembered; no further publication or retained normal open (21.8125ms)
+Γ£ö tampered bytes and wrong content substitution fail verification (16.2201ms)
+Γ£ö invalid signatures, owner/name substitution and malformed catalogue reject (10.2599ms)
+Γ£ö known rollback and same-owner fork rejected; fresh client cannot prove authentic history is latest (14.3505ms)
+Γ£ö missing content reported honestly; retaining requires boolean opt-in (6.8688ms)
+Γ£ö paths, private-consent omission, size caps and catalogue CAS enforced (3.4631ms)
+Γ£ö revocation during content fetch cannot return an apparently current page (9.2618ms)
+Γ£ö provider returns copies and rejects extra manifest files and replayed history (5.8151ms)
+Γ£ö new revision during fetch rejects stale completion (15.983ms)
+Γ£ö storage quota includes unreachable/orphan blobs and preserves previous published head (147.6105ms)
+Γ£ö name/trust and explicit retention capacities stay bounded (99.9185ms)
+Γ£ö known fork quarantines prior retained content without erasing trusted history (8.0405ms)
+Γä╣ tests 13
+Γä╣ suites 0
+Γä╣ pass 13
+Γä╣ fail 0
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 420.3803
